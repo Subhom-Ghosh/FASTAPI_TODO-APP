@@ -1,21 +1,18 @@
 #from http.client import HTTPException
-from fastapi import HTTPException
-from fastapi import FastAPI,Depends
-from sqlalchemy import text
-from database import engine
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import SessionLocal,engine
+from database import SessionLocal, engine
 from sqlalchemy import text
 import model
 import schemas
 from fastapi.middleware.cors import CORSMiddleware
 from utils import hash_password, verify_password
 from datetime import datetime, timedelta
-from jose import jwt
+from jose import jwt, JWTError
 from fastapi.security import OAuth2PasswordBearer
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 
+# It's recommended to load secrets from environment variables rather than hardcoding.
+# e.g., from os import getenv; SECRET_KEY = getenv("SECRET_KEY")
 SECRET_KEY = "your-secret-key-change-this"
 ALGORITHM = "HS256"
 app = FastAPI()
@@ -56,7 +53,7 @@ def get_current_user(
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username = payload.get("sub")
-    except:
+    except JWTError:
         raise HTTPException(status_code=401, detail="Invalid token ❌")
 
     user = db.query(model.User).filter(model.User.username == username).first()
@@ -112,7 +109,7 @@ def delete_todo(
     ).first()
 
     if not todo:
-        return {"message": "Todo not found or not yours "}
+        raise HTTPException(status_code=404, detail="Todo not found or you don't have permission to delete it")
 
     db.delete(todo)
     db.commit()
@@ -135,7 +132,7 @@ def update_todo(
     ).first()
 
     if not todo:
-        return {"message": "Todo not found or not yours ❌"}
+        raise HTTPException(status_code=404, detail="Todo not found or you don't have permission to update it")
 
     todo.title = updated_todo.title
     todo.completed = updated_todo.completed
@@ -174,15 +171,7 @@ def signup(user: schemas.UserCreate, db: Session = Depends(get_db)):
 #-------------LOGIN-----------
 @app.post("/login")
 def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
-
-    print("INPUT USERNAME:", user.username)
-
-    users = db.query(model.User).all()
-    print("ALL USERS:", [u.username for u in users])
-
     db_user = db.query(model.User).filter(model.User.username == user.username).first()
-
-    print("FOUND USER:", db_user)
 
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
@@ -200,8 +189,84 @@ def login(user: schemas.UserLogin, db: Session = Depends(get_db)):
     
     return {"access_token": access_token, "token_type": "bearer",
              "username": db_user.username,
+             "role": db_user.role,
     "fullname": db_user.fullname
     }
 
 
+def require_admin(current_user: model.User = Depends(get_current_user)):
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required ❌")
+    return current_user
 
+
+@app.get("/admin/dashboard")
+def admin_dashboard(
+    db: Session = Depends(get_db),
+    admin: model.User = Depends(require_admin)
+):
+    total_users = db.query(model.User).count()
+    total_todos = db.query(model.Todo).count()
+
+    completed = db.query(model.Todo).filter(model.Todo.completed == True).count()
+    pending = db.query(model.Todo).filter(model.Todo.completed == False).count()
+
+    return {
+        "total_users": total_users,
+        "total_todos": total_todos,
+        "completed": completed,
+        "pending": pending
+    }
+
+
+@app.get("/admin/users")
+def get_all_users(
+    db: Session = Depends(get_db),
+    admin: model.User = Depends(require_admin)
+):
+    users = db.query(model.User).all()
+    return users
+
+
+
+@app.delete("/admin/users/{user_id}")
+def delete_user(
+    user_id: int,
+    db: Session = Depends(get_db),
+    admin: model.User = Depends(require_admin)
+):
+    user = db.query(model.User).filter(model.User.id == user_id).first()
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    db.delete(user)
+    db.commit()
+
+    return {"message": "User deleted successfully"}
+
+
+@app.get("/admin/todos")
+def get_all_todos(
+    db: Session = Depends(get_db),
+    admin: model.User = Depends(require_admin)
+):
+    todos = db.query(model.Todo).all()
+    return todos
+
+
+@app.delete("/admin/todos/{todo_id}")
+def delete_any_todo(
+    todo_id: int,
+    db: Session = Depends(get_db),
+    admin: model.User = Depends(require_admin)
+):
+    todo = db.query(model.Todo).filter(model.Todo.tid == todo_id).first()
+
+    if not todo:
+        raise HTTPException(status_code=404, detail="Todo not found")
+
+    db.delete(todo)
+    db.commit()
+
+    return {"message": "Todo deleted by admin"}

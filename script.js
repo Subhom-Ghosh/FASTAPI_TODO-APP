@@ -195,7 +195,6 @@ async function editTodo(id, oldTitle, completed) {
         const res = await fetch(`${BASE_URL}/TODOS/${id}`, {
             method: "PUT",
             headers: getAuthHeaders(),
-            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 title: newTitle.trim(),
                 completed: completed

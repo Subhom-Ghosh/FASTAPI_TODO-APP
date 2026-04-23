@@ -18,8 +18,3 @@ class UserCreate(BaseModel):
 class UserLogin(BaseModel):
     username: str
     password: str
-
-from pydantic import BaseModel
-
-class TodoCreate(BaseModel):
-    title: str

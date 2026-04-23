@@ -114,11 +114,19 @@ async function login() {
     localStorage.setItem("token", data.access_token);
     localStorage.setItem("username", data.username);
     localStorage.setItem("fullname", data.fullname);
+    localStorage.setItem("role", data.role);
 
     alert("Login Successful");
 
-    
+        if (data.role && data.role.toLowerCase() === "admin") {
+    window.location.href = "admin.html";
+} else {
     window.location.href = "client.html";
+}
+
+
+    
+   // window.location.href = "client.html";
 
   } else {
     alert(data.detail || "Login Failed ❌");
