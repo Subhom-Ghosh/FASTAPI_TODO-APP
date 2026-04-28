@@ -1,6 +1,9 @@
-const BASE_URL = "http://127.0.0.1:8000";
+// Replace this with your actual deployed FastAPI URL later
+const BASE_URL = "https://your-deployed-backend-url.com";
 let currentFilter = 'all';
 let allTodos = [];
+
+
 
 function getAuthHeaders() {
     const token = localStorage.getItem("token");

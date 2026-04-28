@@ -1,3 +1,4 @@
+import os
 #from http.client import HTTPException
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -12,8 +13,7 @@ from jose import jwt, JWTError
 from fastapi.security import OAuth2PasswordBearer
 
 # It's recommended to load secrets from environment variables rather than hardcoding.
-# e.g., from os import getenv; SECRET_KEY = getenv("SECRET_KEY")
-SECRET_KEY = "your-secret-key-change-this"
+SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-this")
 ALGORITHM = "HS256"
 app = FastAPI()
 
