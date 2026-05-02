@@ -3,17 +3,14 @@ from sqlalchemy.orm import relationship
 from database import Base
 
 class Todo(Base):
-    __tablename__ = "TODOS"
+    __tablename__ = "todos"
 
-    tid = Column("TID", Integer, primary_key=True, index=True)
-    title = Column("TITLE", String(255))
-    completed = Column("COMPLETED", Boolean, default=False)
+    tid = Column(Integer, primary_key=True, index=True)
+    title = Column(String(255))
+    completed = Column(Boolean, default=False)
     user_id = Column(Integer, ForeignKey("users.id"))
 
-    owner = relationship("User")
-
-
-
+    owner = relationship("User", back_populates="todos")
 
 
 class User(Base):
@@ -24,3 +21,5 @@ class User(Base):
     username = Column(String(100), unique=True)
     password = Column(String(200))
     role = Column(String(20), default="user")
+
+    todos = relationship("Todo", back_populates="owner")

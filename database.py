@@ -3,15 +3,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from dotenv import load_dotenv
 
-# Load variables from the .env file
 load_dotenv()
 
-# Use environment variable for DB URL, fallback to local for development
-DATABASE_URL = os.getenv("DATABASE_URL", "mysql+pymysql://root:root@localhost/TODOAPP")
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:root@localhost/todoapp"
+)
 
-# Fix: Only use SSL arguments if we are connecting to the live Aiven cloud database
+# SSL only for cloud DB (optional)
 if "aivencloud" in DATABASE_URL:
-    engine = create_engine(DATABASE_URL, connect_args={"ssl": {}})
+    engine = create_engine(DATABASE_URL, connect_args={"sslmode": "require"})
 else:
     engine = create_engine(DATABASE_URL)
 

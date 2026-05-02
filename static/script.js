@@ -1,5 +1,5 @@
 // Replace this with your actual deployed FastAPI URL later
-const BASE_URL = "https://your-deployed-backend-url.com";
+const BASE_URL = "http://localhost:8000";
 let currentFilter = 'all';
 let allTodos = [];
 

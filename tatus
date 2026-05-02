@@ -1,0 +1,179 @@
+[33mcommit 292d60b65c6fa67f303faf884ed74c6267772e47[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 21:30:52 2026 +0530
+
+    Extract SSL parameters from URL and pass via connect_args
+
+[33mcommit 63985f71aaa121e5fcb4074254668b77b9b9fcf1[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 21:27:05 2026 +0530
+
+    Simplify ssl-mode to sslmode parameter conversion
+
+[33mcommit 366db5876ac026a6d0fee8d9f35b48f34697ef08[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 21:23:50 2026 +0530
+
+    Fix ssl-mode parameter handling for PostgreSQL
+
+[33mcommit b6cf768d856b06fe8ba19ee7e4b6f49240ecc459[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 21:20:14 2026 +0530
+
+    Add pymysql to requirements
+
+[33mcommit b6b61fc525a2f641ffdacac91ecb45a61a96c28c[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 21:15:32 2026 +0530
+
+    Add PostgreSQL support
+
+[33mcommit 54b3bb22e6a589ef32687c6aa91b6a62645669af[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 21:07:53 2026 +0530
+
+    updated
+
+[33mcommit 55364066259670b9b5c8a30b7bcc280ad12c9841[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 21:02:23 2026 +0530
+
+    update
+
+[33mcommit b609189606e628dc71598bbfec32a16568a05063[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 12:07:40 2026 +0530
+
+    Change hardcoded localhost URLs to relative paths
+
+[33mcommit feeb1e509816c821fb3063597d344fc0dfe03d2e[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 11:59:52 2026 +0530
+
+    Change hardcoded localhost URLs to relative paths
+
+[33mcommit 28a901e4b698cd6313f45daf85d2172fab990e76[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 11:53:19 2026 +0530
+
+    updated code
+
+[33mcommit 0b6f86602bc36d87be57dfdbdd3dedb4c75ac4aa[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 11:43:52 2026 +0530
+
+    updatesd code
+
+[33mcommit bdb1d44e567e62dc60a082ee2358c977b35f858f[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Fri May 1 11:30:38 2026 +0530
+
+    update comit
+
+[33mcommit a4299ad326b9ff63f9aec69684b9bcabfd2e6b74[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 01:11:27 2026 +0530
+
+    index change
+
+[33mcommit 9e9317097a579ec784cfa35272f8e8e4df4dab0c[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 01:10:24 2026 +0530
+
+    index change
+
+[33mcommit afb191c76066d36a655f62a5d81cc626efbdf336[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 01:03:53 2026 +0530
+
+    Cleanup secrets and switch to SQLite
+
+[33mcommit 530d7690d75187c4bcf0c6ee21e8767187b7d37d[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 01:02:32 2026 +0530
+
+    Cleanup secrets and switch to SQLite
+
+[33mcommit b7128339fcbad35c1fd81188544ae799b90dec47[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 01:02:12 2026 +0530
+
+    Remove .env from git tracking to fix secret violation
+
+[33mcommit df42b5d6089dd5a4bfc7b7eaa3a74664dbe85cbf[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 01:01:28 2026 +0530
+
+    Switch to SQLite for stable deployment
+
+[33mcommit 9b94603ba68c2642a3f03e6c15964455c791cc46[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 00:45:43 2026 +0530
+
+    chnge
+
+[33mcommit e00aa828a9e9741025146b476d334f49902609d5[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 00:39:08 2026 +0530
+
+    Refactor database.py to use environment variables for security
+
+[33mcommit e7f9b1c2c6d044d165076da3d660929e9a90b319[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 00:31:50 2026 +0530
+
+    Refactor database.py to use environment variables for security
+
+[33mcommit b51c0a4ee2365aaefeb1b2216d634faeceaaaa97[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 00:22:26 2026 +0530
+
+    Add sqlite database file
+
+[33mcommit 64e4819fda57f10a6e8566de52212a771929bb1e[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 00:17:13 2026 +0530
+
+    Ensure python-dotenv is in requirements
+
+[33mcommit 104e88fbd821eaef704d4cc383f46cefb3847aa5[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Wed Apr 29 00:09:25 2026 +0530
+
+    Manually update requirements
+
+[33mcommit 502500832a8ca85488e996f4304f5e9278980e89[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Tue Apr 28 23:47:24 2026 +0530
+
+    commit
+
+[33mcommit 4da5b12895ffd16b1881e2deba2fd1d7532020ee[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Tue Apr 28 23:45:12 2026 +0530
+
+    updated code
+
+[33mcommit d4f5f92223da06880549ae67ea8e40c35d95d16d[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Thu Apr 23 20:15:01 2026 +0530
+
+    updated some feature
+
+[33mcommit e89a4a46705774e7113986383074aa1a4ba361da[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Tue Apr 21 00:24:30 2026 +0530
+
+    Updated some files
+
+[33mcommit 485fb34742eb460128d862614434a84d2629a791[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Tue Apr 21 00:14:09 2026 +0530
+
+    Updated some files
+
+[33mcommit 5a5bd2cef8ae72102f97d56d3d738dbdd1ef6949[m
+Author: Subhom <subhomghosh836@gmail.com>
+Date:   Tue Apr 14 00:19:23 2026 +0530
+
+    Initial commit
