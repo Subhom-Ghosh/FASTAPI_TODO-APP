@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "https://fastapi-todo-app-6.onrender.com";
 
 function getHeaders() {
     return {

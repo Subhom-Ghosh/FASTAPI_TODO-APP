@@ -1,5 +1,5 @@
 // Replace this with your actual deployed FastAPI URL later
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "https://fastapi-todo-app-6.onrender.com";
 let currentFilter = 'all';
 let allTodos = [];
 
