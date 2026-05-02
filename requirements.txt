@@ -1,8 +1,8 @@
 fastapi
 uvicorn
 sqlalchemy
-pymysql
-passlib[bcrypt]
-python-jose[cryptography]
-python-multipart
 python-dotenv
+psycopg2-binary
+python-multipart
+jose
+passlib[bcrypt]
